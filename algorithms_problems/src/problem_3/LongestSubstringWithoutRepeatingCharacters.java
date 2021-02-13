@@ -1,6 +1,8 @@
 package problem_3;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /*	
  * 	Name: Kim Geuntae
@@ -21,9 +23,8 @@ import java.util.ArrayList;
 
 public class LongestSubstringWithoutRepeatingCharacters {
 	public static int search(String str) {
-		// TODO Change queue
 		
-		ArrayList<Character> tempList = new ArrayList<Character>();
+		Queue<Character> tempQueue = new LinkedList<>();
 		
 		if(str.length() == 0)
 			return 0;
@@ -35,19 +36,17 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		for(int i=0; i<str.length(); i++) {
 			char chr = str.charAt(i);
 			
-			while (tempList.contains(chr)) {
-				for(int j=0; j<=tempList.indexOf(chr); j++) {
-					if(num < tempList.size()) {
-						num = tempList.size();
-					}
-					tempList.remove(j);
+			while (tempQueue.contains(chr)) {
+				if(num < tempQueue.size()) {
+					num = tempQueue.size();
 				}
+				tempQueue.remove();
 			}
 			
-			tempList.add(chr);
+			tempQueue.add(chr);
 		}
 		
-		return num > tempList.size() ? num : tempList.size();
+		return num > tempQueue.size() ? num : tempQueue.size();
 	}
 	
 	public static void main(String[] args) {
@@ -62,14 +61,14 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		String str8 = "aab";
 		String str9 = "qrsvbspk";
 		
-//		System.out.println(search(str1));
-//		System.out.println(search(str2));
-//		System.out.println(search(str3));
-//		System.out.println(search(str4));
-//		System.out.println(search(str5));
-//		System.out.println(search(str6));
-//		System.out.println(search(str7));
-//		System.out.println(search(str8));
+		System.out.println(search(str1));
+		System.out.println(search(str2));
+		System.out.println(search(str3));
+		System.out.println(search(str4));
+		System.out.println(search(str5));
+		System.out.println(search(str6));
+		System.out.println(search(str7));
+		System.out.println(search(str8));
 		System.out.println(search(str9));
 		
 	}
