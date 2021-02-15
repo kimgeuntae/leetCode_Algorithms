@@ -1,4 +1,4 @@
-package problem_7;
+package problem_07;
 
 /*	
  * 	Name: Kim Geuntae
