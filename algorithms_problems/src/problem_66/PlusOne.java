@@ -15,28 +15,36 @@ package problem_66;
  * 	out: [7,2,8,5,0,9,1,2,9,5,3,6,6,7,3,2,8,4,3,7,9,5,7,7,4,7,4,9,4,7,0,1,1,1,7,4,0,0,7]
  *
  */
+
 public class PlusOne {
 	public static int[] plusOne(int[] digits) {
 		
-		String tempNumStr = "";
-		
-		for(int num : digits) {
-			tempNumStr += num;
-		}
-		
-		long numPlusOne = Long.parseLong(tempNumStr)+1;
-		String temp = Long.toString(numPlusOne);
-		digits = new int [temp.length()];
-		
-		for (int i = 0; i < digits.length; i++) {
-			digits[i] = temp.charAt(i) - '0';
+		if(digits[digits.length-1] != 9) {
+			digits[digits.length-1] += 1;
+		} else {
+			for (int i = digits.length-1; i >= 0; i--) {
+				if(digits[i] == 9 && i != 0) {
+					digits[i] = 0;
+				} else if(digits[i] == 9 && i == 0) {
+					digits[i] = 0;
+					
+					int [] tempDigits = new int [digits.length+1];
+					tempDigits[0] = 1;
+					for(int j=0; j<digits.length; j++) {
+						tempDigits[j+1] = digits[j];
+					}
+					digits = tempDigits;
+				} else {
+					digits[i] += 1;
+					break;
+				}
+			}
 		}
 		
         return digits;
     }
 	
 	public static void main(String[] args) {
-		// TODO Have to Solve case7
 		
 		int [] digits1 = {1,2,3};
 		int [] digits2 = {4,3,2,1};
@@ -45,6 +53,7 @@ public class PlusOne {
 		int [] digits5 = {2,9,9,9};
 		int [] digits6 = {9,8,7,6,5,4,3,2,1,0};
 		int [] digits7 = {7,2,8,5,0,9,1,2,9,5,3,6,6,7,3,2,8,4,3,7,9,5,7,7,4,7,4,9,4,7,0,1,1,1,7,4,0,0,6};
+		int [] digits8 = {9,9,9,9,9};
 		
 		System.out.println(plusOne(digits1));
 		System.out.println(plusOne(digits2));
@@ -53,6 +62,7 @@ public class PlusOne {
 		System.out.println(plusOne(digits5));
 		System.out.println(plusOne(digits6));
 		System.out.println(plusOne(digits7));
+		System.out.println(plusOne(digits8));
 		
 	}
 }
