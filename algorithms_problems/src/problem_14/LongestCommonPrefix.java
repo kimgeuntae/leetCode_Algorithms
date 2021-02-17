@@ -7,9 +7,9 @@ package problem_14;
  *
  * 	in: ["flower","flow","flight"]	 	out: "fl"
  * 	in:	["dog","racecar","car"]			out: ""
- * 	in:	["dlowerflow","flow","flowht"]	out: "flow"
+ * 	in:	["dlowerflow","flow","flowht"]	out: ""
  * 	in:	["safsdaeccdswedss","flow","flight"]
- *	out: "f"
+ *	out: ""
  * 	in:	[]	out: ""
  *  
  *  [solved]
@@ -20,7 +20,12 @@ package problem_14;
 
 public class LongestCommonPrefix {
 	private static String longestCommonPrefix(String [] strs) {
-		// TODO Runtime Error test_case [strs5]
+		// TODO Refactoring to Only Prefix
+		// Now this code find LongestCommon word
+		
+		if(strs.length == 0) {
+			return "";
+		}
 		
 		String minStr = strs[0];
 		String longestCommonStr = "";
@@ -61,11 +66,14 @@ public class LongestCommonPrefix {
 		String [] strs3 = {"dlowerflow","flow","flowht"};
 		String [] strs4 = {"safsdaeccdswedss","flow","flight"};
 		String [] strs5 = {};
+		String [] strs6 = {"reflower","flow","flight"};
 		
 		System.out.println(longestCommonPrefix(strs1));
 		System.out.println(longestCommonPrefix(strs2));
 		System.out.println(longestCommonPrefix(strs3));
 		System.out.println(longestCommonPrefix(strs4));
 		System.out.println(longestCommonPrefix(strs5));
+		System.out.println(longestCommonPrefix(strs6));
+		
 	}
 }
