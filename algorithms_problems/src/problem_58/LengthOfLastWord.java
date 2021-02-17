@@ -22,13 +22,13 @@ public class LengthOfLastWord {
 	public static int lengthOfLastWord(String s) {
 		
 		while(s.lastIndexOf(" ") == s.length()-1) {
-			s = s.substring(0, s.lastIndexOf(" "));
+			s = s.substring(0, s.lastIndexOf(" "));	// Remove space on the right of last word.
 			if(s.length() == 0) {
-				return 0;
+				return s.length();
 			}
 		}
 		
-		s = s.substring(s.lastIndexOf(" ")+1, s.length());
+		s = s.substring(s.lastIndexOf(" ")+1, s.length());	// Remove space on the left of last word.
 		return s.length();
 	}
 	
