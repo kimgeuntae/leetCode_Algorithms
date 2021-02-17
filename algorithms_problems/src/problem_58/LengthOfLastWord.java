@@ -10,18 +10,21 @@ package problem_58;
  * 	in:	s = " a e dase ee" 	out: 2
  *  in:	s = "a " 			out: 1
  *  in:	s = "a asd fa " 	out: 2
- *
+ *  in: s = "b   a    "		out: 1
+ *  
  */
 
 public class LengthOfLastWord {
 	public static int lengthOfLastWord(String s) {
 		
-		if(s.lastIndexOf(" ") == s.length()) {
+		if(s.equals(" ")) {
 			return 0;
-		} else {
-			s = s.substring(s.lastIndexOf(" ")+1, s.length());
-			return s.length();
+		} else if(s.lastIndexOf(" ") == s.length()-1) {
+			s = s.substring(0, s.lastIndexOf(" "));
 		}
+		
+		s = s.substring(s.lastIndexOf(" ")+1, s.length());
+		return s.length();
 	}
 	
 	public static void main(String[] args) {
@@ -31,11 +34,13 @@ public class LengthOfLastWord {
 		String str3 = " a e dase ee";
 		String str4 = "a ";
 		String str5 = "a asd fa ";
+		String str6 = "b   a    ";
 		
 		System.out.println(lengthOfLastWord(str1));
 		System.out.println(lengthOfLastWord(str2));
 		System.out.println(lengthOfLastWord(str3));
 		System.out.println(lengthOfLastWord(str4));
 		System.out.println(lengthOfLastWord(str5));
+		System.out.println(lengthOfLastWord(str6));
 	}
 }
