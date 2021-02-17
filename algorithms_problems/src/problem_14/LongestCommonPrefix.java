@@ -20,6 +20,7 @@ package problem_14;
 
 public class LongestCommonPrefix {
 	private static String longestCommonPrefix(String [] strs) {
+		// TODO Runtime Error test_case [strs5]
 		
 		String minStr = strs[0];
 		String longestCommonStr = "";
@@ -59,10 +60,12 @@ public class LongestCommonPrefix {
 		String [] strs2 = {"dog","racecar","car"};
 		String [] strs3 = {"dlowerflow","flow","flowht"};
 		String [] strs4 = {"safsdaeccdswedss","flow","flight"};
+		String [] strs5 = {};
 		
 		System.out.println(longestCommonPrefix(strs1));
 		System.out.println(longestCommonPrefix(strs2));
 		System.out.println(longestCommonPrefix(strs3));
 		System.out.println(longestCommonPrefix(strs4));
+		System.out.println(longestCommonPrefix(strs5));
 	}
 }
