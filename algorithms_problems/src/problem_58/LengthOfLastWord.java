@@ -8,6 +8,8 @@ package problem_58;
  *	in:	s = "Hello World" 	out: 5
  * 	in:	s = " " 			out: 0
  * 	in:	s = " a e dase ee" 	out: 2
+ *  in:	s = "a " 			out: 1
+ *  in:	s = "a asd fa " 	out: 2
  *
  */
 
@@ -27,9 +29,13 @@ public class LengthOfLastWord {
 		String str1 = "Hello World";
 		String str2 = " ";
 		String str3 = " a e dase ee";
+		String str4 = "a ";
+		String str5 = "a asd fa ";
 		
 		System.out.println(lengthOfLastWord(str1));
 		System.out.println(lengthOfLastWord(str2));
 		System.out.println(lengthOfLastWord(str3));
+		System.out.println(lengthOfLastWord(str4));
+		System.out.println(lengthOfLastWord(str5));
 	}
 }
