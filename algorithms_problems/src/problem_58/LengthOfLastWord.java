@@ -11,15 +11,19 @@ package problem_58;
  *  in:	s = "a " 			out: 1
  *  in:	s = "a asd fa " 	out: 2
  *  in: s = "b   a    "		out: 1
+ *  in: s = "        "		out: 0
  *  
  */
 
 public class LengthOfLastWord {
 	public static int lengthOfLastWord(String s) {
+		// TODO Runtime from str7
 		
 		if(s.equals(" ")) {
 			return 0;
-		} else if(s.lastIndexOf(" ") == s.length()-1) {
+		}
+		
+		while(s.lastIndexOf(" ") == s.length()-1) {
 			s = s.substring(0, s.lastIndexOf(" "));
 		}
 		
@@ -35,6 +39,7 @@ public class LengthOfLastWord {
 		String str4 = "a ";
 		String str5 = "a asd fa ";
 		String str6 = "b   a    ";
+		String str7 = "        ";
 		
 		System.out.println(lengthOfLastWord(str1));
 		System.out.println(lengthOfLastWord(str2));
@@ -42,5 +47,6 @@ public class LengthOfLastWord {
 		System.out.println(lengthOfLastWord(str4));
 		System.out.println(lengthOfLastWord(str5));
 		System.out.println(lengthOfLastWord(str6));
+		System.out.println(lengthOfLastWord(str7));
 	}
 }
