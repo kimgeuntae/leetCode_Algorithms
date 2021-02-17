@@ -1,7 +1,5 @@
 package problem_27;
 
-import java.util.Arrays;
-
 /*	
  * 	Name: Kim Geuntae
  * 	Github: https://github.com/kimgeuntae/leetCode_Algorithms
@@ -21,12 +19,11 @@ public class RemoveElement {
 		
 		for(int i=0; i<nums.length; i++) {
 			if(nums[i] == val) {
-				nums[i] = 51;
 				removedCount++;
+			} else {
+				nums[i-removedCount] = nums[i];
 			}
 		}
-		
-		Arrays.sort(nums);
 		
 		return nums.length-removedCount;
 	}
