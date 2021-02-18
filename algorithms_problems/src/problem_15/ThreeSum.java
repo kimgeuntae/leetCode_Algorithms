@@ -22,6 +22,7 @@ import java.util.List;
 public class ThreeSum {
 	
 	public static List<List<Integer>> threeSum(int[] nums) {
+		// TODO Time Limit Exceeded in test_case nums6
 		
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<List<Integer>>();
