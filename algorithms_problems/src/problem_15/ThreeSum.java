@@ -16,8 +16,8 @@ import java.util.Set;
  * 	in:	[0] out: []
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 524 ms, faster than 14.93%
+ *  Memory Usage: 43.4 MB, less than 45.58%
  *  
  */
 
@@ -25,7 +25,7 @@ public class ThreeSum {
 	
 	public static List<List<Integer>> threeSum(int[] nums) {
 		
-        Arrays.sort(nums);
+		Arrays.sort(nums);
         Set<List<Integer>> result = new HashSet<>();
         
         if(nums.length >= 3) {
@@ -38,7 +38,7 @@ public class ThreeSum {
 	                int tempSum = nums[i] + nums[left] + nums[right];
 	                List<Integer> tempList = Arrays.asList(nums[i], nums[left], nums[right]);
 	                
-	                if(tempSum == 0 && !result.contains(tempList)) {
+	                if(tempSum == 0) {
 	                    result.add(tempList);
 	                    left++;
 	                    right--;
