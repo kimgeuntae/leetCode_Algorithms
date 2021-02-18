@@ -2,7 +2,9 @@ package problem_15;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /*	
  * 	Name: Kim Geuntae
@@ -22,22 +24,21 @@ import java.util.List;
 public class ThreeSum {
 	
 	public static List<List<Integer>> threeSum(int[] nums) {
-		// TODO Time Limit Exceeded in test_case nums6
 		
         Arrays.sort(nums);
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        Set<List<Integer>> result = new HashSet<>();
         
         if(nums.length >= 3) {
         	
-	        for (int i = 0; i < nums.length; i++) {
+	        for(int i = 0; i < nums.length; i++) {
 	            int left = i + 1;
 	            int right = nums.length - 1;
 	            
-	            while (left < right) {
+	            while(left < right) {
 	                int tempSum = nums[i] + nums[left] + nums[right];
 	                List<Integer> tempList = Arrays.asList(nums[i], nums[left], nums[right]);
 	                
-	                if (tempSum == 0 && !result.contains(tempList)) {
+	                if(tempSum == 0 && !result.contains(tempList)) {
 	                    result.add(tempList);
 	                    left++;
 	                    right--;
@@ -50,13 +51,12 @@ public class ThreeSum {
 	        }
         }
 	        
-        return result;
+        return new ArrayList<>(result);
     }
 	
 	public static void main(String[] args) {
 		
 		int [] nums1 = {-1,0,1,2,-2,-4};
-		
 		int [] nums2 = {};
 		int [] nums3 = {0};
 		int [] nums4 = {100000, -100000, 1, 0};
