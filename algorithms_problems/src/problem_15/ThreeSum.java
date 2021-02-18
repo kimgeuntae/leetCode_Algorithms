@@ -20,33 +20,42 @@ import java.util.List;
  */
 
 public class ThreeSum {
-	public static List<List<Integer>> threeSum(int [] nums) {
-		// TODO Time Limit Exceeded in test_case nums6
-		Arrays.sort(nums);
+	
+	public static List<List<Integer>> threeSum(int[] nums) {
 		
-		List<List<Integer>> result = new ArrayList<List<Integer>>();
-		
-		if(nums.length >= 3) {
-			for(int i=0; i<nums.length; i++) {
-				for(int j=i+1; j<nums.length; j++) {
-					for(int k=j+1; k<nums.length; k++) {
-						int tempNum = nums[i] + nums[j] + nums[k];
-						List<Integer> tempList = Arrays.asList(nums[i], nums[j], nums[k]);
-						
-						if(tempNum == 0 && !result.contains(tempList)) {
-							result.add(tempList);
-						}
-					}
-				}
-			}
-		}
-		
-		return result;
-	}
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        
+        if(nums.length >= 3) {
+        	
+	        for (int i = 0; i < nums.length; i++) {
+	            int left = i + 1;
+	            int right = nums.length - 1;
+	            
+	            while (left < right) {
+	                int tempSum = nums[i] + nums[left] + nums[right];
+	                List<Integer> tempList = Arrays.asList(nums[i], nums[left], nums[right]);
+	                
+	                if (tempSum == 0 && !result.contains(tempList)) {
+	                    result.add(tempList);
+	                    left++;
+	                    right--;
+	                } else if (tempSum < 0) {
+	                    left++;
+	                } else {
+	                    right--;
+	                }
+	            }
+	        }
+        }
+	        
+        return result;
+    }
 	
 	public static void main(String[] args) {
 		
-		int [] nums1 = {-1,0,1,2,-1,-4};
+		int [] nums1 = {-1,0,1,2,-2,-4};
+		
 		int [] nums2 = {};
 		int [] nums3 = {0};
 		int [] nums4 = {100000, -100000, 1, 0};
