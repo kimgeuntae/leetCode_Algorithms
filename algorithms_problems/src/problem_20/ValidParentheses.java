@@ -23,7 +23,8 @@ import java.util.Stack;
 
 public class ValidParentheses {
 	public static boolean isValid(String s) {
-        
+        // TODO Runtime Error test_case s10
+		
 		if(s == null || s.length() % 2 == 1) return false;
 		
 		Map<Character, Character> tempMap = new HashMap<Character, Character>();
@@ -72,6 +73,7 @@ public class ValidParentheses {
 		String s7 = "((";		// false
 		String s8 = "]]";		// false
 		String s9 = "[[[]";		// false
+		String s10 = "()))";	// false
 		
 		System.out.println(isValid(s1));
 		System.out.println(isValid(s2));
@@ -82,6 +84,7 @@ public class ValidParentheses {
 		System.out.println(isValid(s7));
 		System.out.println(isValid(s8));
 		System.out.println(isValid(s9));
+		System.out.println(isValid(s10));
 
 	}
 }
