@@ -10,6 +10,7 @@ package problem_204;
  * 	in:	1	out: 0
  * 	in:	6	out: 3	Explanation: 2, 3, 5
  * 	in:	3	out: 1	Explanation: 2
+ * 	in:	499979	out: 	Explanation: 
  *  
  *  [solved]
  *  Runtime:
@@ -19,6 +20,8 @@ package problem_204;
 
 public class CountPrimes {
 	public static int countPrimes(int n) {
+		// TODO Error Time Limit Exceeded test_case n6 
+		
 		int primeCount = 0;
 		int nonPrimeCount;
 		
@@ -49,12 +52,14 @@ public class CountPrimes {
 		int n3 = 1;
 		int n4 = 6;
 		int n5 = 3;
+		int n6 = 499979;
 		
 		System.out.println(countPrimes(n1));
 		System.out.println(countPrimes(n2));
 		System.out.println(countPrimes(n3));
 		System.out.println(countPrimes(n4));
 		System.out.println(countPrimes(n5));
+		System.out.println(countPrimes(n6));
 		
 	}
 }
