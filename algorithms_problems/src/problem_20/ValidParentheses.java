@@ -23,7 +23,7 @@ import java.util.Stack;
 
 public class ValidParentheses {
 	public static boolean isValid(String s) {
-        // TODO Error Wrong Answer test_case s11
+        // TODO Error Wrong Answer test_case s12
 		
 		if(s == null || s.length() % 2 == 1) return false;
 		
@@ -51,9 +51,8 @@ public class ValidParentheses {
 				tempStack.push(now);
 			}
 			
-			if(now == tempMap.get(tempStack.lastElement())) {
-				tempStack.pop();
-			} else if(tempMap.get(tempStack.lastElement()) == next) {
+			
+			if(tempMap.containsKey(now) && tempMap.get(tempStack.lastElement()) == next) {
 				tempStack.pop();
 				i++;
 			} else if(tempMap.containsValue(next)) {
@@ -77,18 +76,20 @@ public class ValidParentheses {
 		String s9 = "[[[]";		// false
 		String s10 = "()))";	// false
 		String s11 = "[([]])";	// false
+		String s12 = "(([]){})";	// false
 		
-		System.out.println(isValid(s1));
-		System.out.println(isValid(s2));
-		System.out.println(isValid(s3));
-		System.out.println(isValid(s4));
-		System.out.println(isValid(s5));
-		System.out.println(isValid(s6));
-		System.out.println(isValid(s7));
-		System.out.println(isValid(s8));
-		System.out.println(isValid(s9));
-		System.out.println(isValid(s10));
-		System.out.println(isValid(s11));
+//		System.out.println(isValid(s1));
+//		System.out.println(isValid(s2));
+//		System.out.println(isValid(s3));
+//		System.out.println(isValid(s4));
+//		System.out.println(isValid(s5));
+//		System.out.println(isValid(s6));
+//		System.out.println(isValid(s7));
+//		System.out.println(isValid(s8));
+//		System.out.println(isValid(s9));
+//		System.out.println(isValid(s10));
+//		System.out.println(isValid(s11));
+		System.out.println(isValid(s12));
 
 	}
 }
