@@ -10,34 +10,32 @@ package problem_204;
  * 	in:	1	out: 0
  * 	in:	6	out: 3	Explanation: 2, 3, 5
  * 	in:	3	out: 1	Explanation: 2
- * 	in:	499979	out: 	Explanation: 
+ * 	in:	499979	out: 41537	Explanation: um.. there are 41537 under 499979.T_T
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 186 ms, faster than 14.97%
+ *  Memory Usage: 35.4 MB, less than 98.85%
  *  
  */
 
 public class CountPrimes {
+	
+	public static boolean isPrime(int n) {
+        if( n < 2 ) return false;
+        if( n < 4 ) return true;
+        if( n%2==0 || n%3==0 ) return false;
+        for(int i=5; i*i<=n; i+=6 ) if(n%i==0 || n%(i+2)==0) return false;
+        return true;
+    }
+	
 	public static int countPrimes(int n) {
-		// TODO Error Time Limit Exceeded test_case n6 
 		
 		int primeCount = 0;
-		int nonPrimeCount;
 		
 		if(n > 1) {
 			
 			for(int i=2; i< n; i++) {
-				nonPrimeCount=0;
-				
-				for(int j=2; j<i-1; j++) {
-					if(i%j == 0) {
-						nonPrimeCount++;
-						break;
-					}
-				}
-				
-				if(nonPrimeCount == 0) {
+				if(isPrime(i)) {
 					primeCount++;
 				}
 			}
