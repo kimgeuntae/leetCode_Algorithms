@@ -12,8 +12,8 @@ package problem_35;
  *  out: 4
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 0 ms, faster than 100.00%
+ *  Memory Usage: 38.7 MB, less than 61.18%
  *  
  */
 
