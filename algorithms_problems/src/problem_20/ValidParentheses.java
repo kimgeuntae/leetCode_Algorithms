@@ -16,16 +16,15 @@ import java.util.Stack;
  * 	in:	"{[]}"		out: true
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 2 ms, faster than 29.63%
+ *  Memory Usage: 37.5 MB, less than 25.76%
  *  
  */
 
 public class ValidParentheses {
 	public static boolean isValid(String s) {
-        // TODO Error Wrong Answer test_case s12
 		
-		if(s == null || s.length() % 2 == 1) return false;
+		if(s == null || s.length() <= 1 || s.length() % 2 == 1) return false;	// Odd length return false
 		
 		Map<Character, Character> tempMap = new HashMap<Character, Character>();
 		tempMap.put('(', ')');
@@ -36,31 +35,36 @@ public class ValidParentheses {
 		
 		if(tempMap.containsValue(tempChr[0]) || tempMap.containsKey(tempChr[tempChr.length-1])) {
 			return false;
-		}
+		}	// Start [closed] , end [open] return false
 		
 		Stack<Character> tempStack = new Stack<Character>();
 		
-		for(int i=0; i<tempChr.length-1; i++) {
+		for(int i=0; i<tempChr.length; i++) {
 			
 			char now = tempChr[i];
-			char next = tempChr[i+1];
 			
-			if(tempStack.empty() && tempMap.containsValue(now)) {
-				return false;
-			} else if(tempMap.containsKey(now)) {
-				tempStack.push(now);
-			}
-			
-			
-			if(tempMap.containsKey(now) && tempMap.get(tempStack.lastElement()) == next) {
-				tempStack.pop();
-				i++;
-			} else if(tempMap.containsValue(next)) {
-				return false;
+			if(tempMap.containsKey(now)) {
+				char next = tempChr[i+1];
+				
+				if(tempMap.get(now) == next) {
+					i++;
+				} else if(tempMap.containsValue(next)) {
+					return false;
+				} else {
+					tempStack.push(now);	// Only push [open]
+				}
+			} else {
+				if(tempStack.isEmpty()) {
+					return false;
+				} else if(tempMap.get(tempStack.lastElement()) == now) {
+					tempStack.pop();		// Only pop [closed]
+				} else {
+					return false;
+				}
 			}
 		}
 		
-		return (tempStack.size() <= 1) ? true : false;
+		return tempStack.isEmpty();		// Non clean stack return false
     }
 	
 	public static void main(String[] args) {
@@ -76,20 +80,20 @@ public class ValidParentheses {
 		String s9 = "[[[]";		// false
 		String s10 = "()))";	// false
 		String s11 = "[([]])";	// false
-		String s12 = "(([]){})";	// false
+		String s12 = "(([]){})";	// true
 		
-//		System.out.println(isValid(s1));
-//		System.out.println(isValid(s2));
-//		System.out.println(isValid(s3));
-//		System.out.println(isValid(s4));
-//		System.out.println(isValid(s5));
-//		System.out.println(isValid(s6));
-//		System.out.println(isValid(s7));
-//		System.out.println(isValid(s8));
-//		System.out.println(isValid(s9));
-//		System.out.println(isValid(s10));
-//		System.out.println(isValid(s11));
-		System.out.println(isValid(s12));
+		System.out.println("1 : " + isValid(s1));
+		System.out.println("2 : " + isValid(s2));
+		System.out.println("3 : " + isValid(s3));
+		System.out.println("4 : " + isValid(s4));
+		System.out.println("5 : " + isValid(s5));
+		System.out.println("6 : " + isValid(s6));
+		System.out.println("7 : " + isValid(s7));
+		System.out.println("8 : " + isValid(s8));
+		System.out.println("9 : " + isValid(s9));
+		System.out.println("10 : " + isValid(s10));
+		System.out.println("11 : " + isValid(s11));
+		System.out.println("12 : " + isValid(s12));
 
 	}
 }
