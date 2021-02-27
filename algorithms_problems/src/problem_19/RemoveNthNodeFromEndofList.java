@@ -10,17 +10,30 @@ package problem_19;
  * 	in:	head = [1,2], n = 1		 	out: [1]
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 1 ms, faster than 17.95%
+ *  Memory Usage: 39.3 MB, less than 5.53%
  *  
  */
 
 public class RemoveNthNodeFromEndofList {
 	
-	public ListNode removeNthFromEnd(ListNode head, int n) {
+	public static ListNode removeNthFromEnd(ListNode head, int n) {
 		
 		ListNode start = new ListNode(0);
+		ListNode slow = start, fast = start;
 		
+		slow.next = head;
+		
+		for(int i=1; i<=n+1; i++) {
+			fast = fast.next;
+		}
+		
+		while(fast != null) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+		
+		slow.next = slow.next.next;
 		return start.next;
     }
 	
@@ -41,6 +54,8 @@ public class RemoveNthNodeFromEndofList {
 		
 		printListNode(head);
 		System.out.println();
+		
+		printListNode(removeNthFromEnd(head, 2));
 		
 	}
 }
