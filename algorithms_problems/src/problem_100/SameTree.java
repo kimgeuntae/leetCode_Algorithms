@@ -10,16 +10,22 @@ package problem_100;
  * 	in:	p = [1,2,1], q = [1,1,2] out: false
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 0 ms, faster than 100.00%
+ *  Memory Usage: 36.4 MB, less than 66.96%
  *  
  */
 
 public class SameTree {
 	
 	public static boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p == null || q == null) return (p == q);
         
-		return true;
+        if(p.val == q.val) {
+        	if(!isSameTree(p.left, q.left)) return false;
+        	if(!isSameTree(p.right, q.right)) return false;
+        } else return false;
+        
+        return true;
     }
 	
 	private static void inOrder(TreeNode node) {
@@ -48,21 +54,27 @@ public class SameTree {
 	
 	public static void main(String[] args) {
 		
-//				1
-//			3      2
-//		 5     4
+//			1
+//		  2   3
 		
-		TreeNode n5 = new TreeNode(5, null, null);
-		TreeNode n4 = new TreeNode(4, null, null);
-		TreeNode n3 = new TreeNode(3, n5, n4);
-		TreeNode n2 = new TreeNode(2, null, null);
-		TreeNode n1 = new TreeNode(1, n3, n2);
+		TreeNode p3 = new TreeNode(3, null, null);
+		TreeNode p2 = new TreeNode(2, null, null);
+		TreeNode p1 = new TreeNode(1, p2, p3);
 		
-		postOrder(n1);
+		TreeNode q3 = new TreeNode(3, null, null);
+		TreeNode q2 = new TreeNode(2, null, null);
+		TreeNode q1 = new TreeNode(1, q2, q3);
+		
+		TreeNode w2 = new TreeNode(2, null, null);
+		TreeNode w1 = new TreeNode(1, w2, null);
+		
+		inOrder(p1);
 		System.out.println();
-		preOrder(n1);
+		inOrder(q1);
 		System.out.println();
-		inOrder(n1);
 		
+		System.out.println(isSameTree(p1, q1));
+		System.out.println(isSameTree(p1, w1));
+
 	}
 }
