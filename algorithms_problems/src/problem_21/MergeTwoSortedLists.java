@@ -10,8 +10,8 @@ package problem_21;
  * 	in:	l1 = [], l2 = [0] out: [0]
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 0 ms, faster than 100.00%
+ *  Memory Usage: 38.4 MB, less than 50.50%
  *  
  */
 
