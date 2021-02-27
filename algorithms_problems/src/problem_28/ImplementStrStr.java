@@ -10,15 +10,14 @@ package problem_28;
  * 	in:	haystack = "", needle = ""			out: 0
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 1 ms, faster than 65.04%
+ *  Memory Usage: 39.7 MB, less than 6.59%
  *  
  */
 
 public class ImplementStrStr {
 	
 	public static int strStr(String haystack, String needle) {
-		// TODO Runtime Error [haystack4, needle4]
 	    
 		int l1 = haystack.length(), l2 = needle.length();
 		
@@ -37,6 +36,7 @@ public class ImplementStrStr {
 					return i;
 				} else if(tempStr.contains(needleFitstWord)) {
 					i += tempStr.indexOf(needleFitstWord);
+					if(l1 < i+l2) return -1;
 					tempStr = haystack.substring(i, i+l2);
 					if(tempStr.equals(needle)) return i;
 					
