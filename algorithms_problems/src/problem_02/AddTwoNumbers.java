@@ -1,7 +1,5 @@
 package problem_02;
 
-import java.util.ArrayList;
-
 /*	
  * 	Name: Kim Geuntae
  * 	Github: https://github.com/kimgeuntae/leetCode_Algorithms
@@ -27,25 +25,43 @@ public class AddTwoNumbers {
 		return (int)num;
 	}
 	
-	public static void main(String[] args) {
-		int [] inPutNums1 = {9, 9, 9, 9, 9, 9, 9};
-		int [] inPutNums2 = {9, 9, 9, 9};
+	private static void printListNode(ListNode head) {
+		while(head != null) {
+			System.out.print(head.val + " ");
+			head = head.next;
+		}
+		System.out.println();
+	}
+	
+	private static ListNode genListNode(int [] nums) {
 		
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		ListNode head = new ListNode();
 		
-		int num = listToInt(inPutNums1) + listToInt(inPutNums2);
-		
-		while (true) {
+		for(int num : nums) {
+			ListNode newNode = new ListNode(num);
 			
-			if(num/10 == 0) {
-				list.add(num);
-				break;
-			}
-			
-			list.add(num%10);
-			num = num/10;
+			newNode.next = head;
+			head = newNode;
 		}
 		
-		System.out.println(list);
+		return head;
+	}
+	
+	public static void main(String[] args) {
+		
+		int [] nums1_1 = {3,4,2} , nums1_2 = {4,6,5};
+		int [] nums2_1 = {9, 9, 9, 9, 9, 9, 9} , nums2_2 = {9, 9, 9, 9};
+		
+		ListNode listNodeNums1_1 = genListNode(nums1_1);
+		ListNode listNodeNums1_2 = genListNode(nums1_2);
+		ListNode listNodeNums2_1 = genListNode(nums2_1);
+		ListNode listNodeNums2_2 = genListNode(nums2_2);
+		
+		printListNode(listNodeNums1_1);
+		printListNode(listNodeNums1_2);
+		printListNode(listNodeNums2_1);
+		printListNode(listNodeNums2_2);
+		
+		
 	}
 }
