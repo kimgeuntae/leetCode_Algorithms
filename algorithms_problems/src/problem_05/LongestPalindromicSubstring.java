@@ -11,6 +11,8 @@ import java.util.ArrayList;
  * 	in:	"cbbd" out: "bb"
  * 	in:	"a" out: "a"
  * 	in:	"ac" out: "a"
+ * 	in:	"ccc" out: "ccc"
+ * 	in:	"babadb" out: "bab"
  *  
  *  [solved]
  *  Runtime:
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 
 public class LongestPalindromicSubstring {
 	public static String longestPalindrome(String s) {
+		// TODO Error_case 5, 6 Change palindromic.
 		
 		if(s == null || s.length() <= 1) return s;
 		
@@ -51,11 +54,15 @@ public class LongestPalindromicSubstring {
 		String s2 = "cbbd";
 		String s3 = "a";
 		String s4 = "ac";
+		String s5 = "ccc";	//	"ccc"
+		String s6 = "babadb";	// "bab"
 		
 		System.out.println(longestPalindrome(s1));
 		System.out.println(longestPalindrome(s2));
 		System.out.println(longestPalindrome(s3));
 		System.out.println(longestPalindrome(s4));
+		System.out.println(longestPalindrome(s5));
+		System.out.println(longestPalindrome(s6));
 		
 	}
 }
