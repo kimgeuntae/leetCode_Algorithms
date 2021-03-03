@@ -1,7 +1,5 @@
 package problem_05;
 
-import java.util.ArrayList;
-
 /*	
  * 	Name: Kim Geuntae
  * 	Github: https://github.com/kimgeuntae/leetCode_Algorithms
@@ -15,33 +13,48 @@ import java.util.ArrayList;
  * 	in:	"babadb" out: "bab"
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 940 ms, faster than 5.01%
+ *  Memory Usage: 39.4 MB, less than 56.79%
  *  
  */
 
 public class LongestPalindromicSubstring {
 	public static String longestPalindrome(String s) {
-		// TODO Error_case 5, 6 Change palindromic.
 		
 		if(s == null || s.length() <= 1) return s;
 		
 		String longestStr = s.substring(0, 1);
-		
-		ArrayList<Character> tempList = new ArrayList<Character>();
 		char [] tempChr = s.toCharArray();
 		
-		for(int i=0; i<tempChr.length; i++) {
-			String now = "";
+		for(int i=1; i<tempChr.length; i++) {
+			String curStr = s.substring(0, i+1);
+			String curWord = Character.toString(tempChr[i]);
+			boolean isPalindromic = false;
 			
-			if(tempList.contains(tempChr[i])) {
-				now = s.substring(tempList.lastIndexOf(tempChr[i]), i+1);
+			while(curStr.contains(curWord)) {
+				
+				curStr = curStr.substring(curStr.indexOf(tempChr[i]));
+				char [] curChrArr = curStr.toCharArray();
+				int left = 0;
+				int right = curStr.length()-1;
+				
+				while(left <= right) {
+					if(curChrArr[left] != curChrArr[right]) {
+						isPalindromic = false;
+						break;
+					} else {
+						isPalindromic = true;
+						left++;
+						right--;
+					}
+				}
+				
+				if(isPalindromic) break;
+				curStr = curStr.substring(1);
 			}
 			
-			tempList.add(tempChr[i]);
-			
-			if(longestStr.length() < now.length()) {
-				longestStr = now;
+			if(longestStr.length() < curStr.length() && isPalindromic) {
+				longestStr = curStr;
 			}
 		}
 		
