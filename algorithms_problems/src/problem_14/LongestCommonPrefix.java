@@ -1,5 +1,7 @@
 package problem_14;
 
+import java.util.Arrays;
+
 /*	
  * 	Name: Kim Geuntae
  * 	Github: https://github.com/kimgeuntae/leetCode_Algorithms
@@ -8,55 +10,31 @@ package problem_14;
  * 	in: ["flower","flow","flight"]	 	out: "fl"
  * 	in:	["dog","racecar","car"]			out: ""
  * 	in:	["dlowerflow","flow","flowht"]	out: ""
- * 	in:	["safsdaeccdswedss","flow","flight"]
- *	out: ""
+ * 	in:	["safsdaeccdswedss","flow","flight"]  out: ""
  * 	in:	[]	out: ""
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 1 ms, faster than 62.50%
+ *  Memory Usage: 38.8 MB, less than 30.12%
  *  
  */
 
 public class LongestCommonPrefix {
 	private static String longestCommonPrefix(String [] strs) {
-		// TODO Refactoring to Only Prefix
-		// Now this code find LongestCommon word
 		
-		if(strs.length == 0) {
-			return "";
+		if(strs.length == 0) return "";
+		
+		Arrays.sort(strs);
+		
+		int same = 0;
+		
+		while(same < strs[0].length()) {
+			if(strs[0].charAt(same) == strs[strs.length-1].charAt(same)) {
+				same++;
+			} else break;
 		}
 		
-		String minStr = strs[0];
-		String longestCommonStr = "";
-		
-		for(String str : strs) {
-			if(minStr.length() > str.length()) {
-				minStr = str;
-			}
-		}
-		
-		for(String str : strs) {
-			longestCommonStr = "";
-			
-			for(int i=0; i<minStr.length(); i++) {
-				for(int j=minStr.length(); j>=i; j--) {
-					if(str.contains(minStr.substring(i, j))) {
-						if(longestCommonStr.length() < minStr.substring(i, j).length()) {
-							longestCommonStr = minStr.substring(i,  j);
-						}
-					}
-				}
-			}
-			
-			if(longestCommonStr.equals("")) {
-				return "";
-			} else {
-				minStr = longestCommonStr;
-			}
-		}
-		
-		return longestCommonStr;
+		return strs[0].substring(0, same);
 	}
 	
 	public static void main(String[] args) {
