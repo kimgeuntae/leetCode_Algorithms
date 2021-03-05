@@ -13,14 +13,13 @@ import java.util.Arrays;
  * 	out: [1]
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 0 ms, faster than 100.00%
+ *  Memory Usage: 38.7 MB, less than 98.02%
  *  
  */
 
 public class MergeSortedArray {
 	public static void merge(int[] nums1, int m, int[] nums2, int n) {
-		// TODO Error Wrong Answer test_case3
         
 		int nums1Index = m-1, nums2Index = n-1, resultIndex = m+n;
 		int tempNum = 0;
@@ -29,7 +28,7 @@ public class MergeSortedArray {
 			if(nums2Index < 0) {
 				tempNum = nums1[nums1Index--];
 			} else if(nums1Index < 0) {
-				tempNum = nums1[nums2Index--];
+				tempNum = nums2[nums2Index--];
 			} else {
 				if(nums2[nums2Index] < nums1[nums1Index]) {
 					tempNum = nums1[nums1Index--];
