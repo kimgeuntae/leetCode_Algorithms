@@ -21,7 +21,7 @@ import java.util.Arrays;
 public class MergeSortedArray {
 	public static void merge(int[] nums1, int m, int[] nums2, int n) {
         
-		int nums1Index = m-1, nums2Index = n-1, resultIndex = m+n;
+		int nums1Index = m-1, nums2Index = n-1, resultIndex = m+n-1;
 		int tempNum = 0;
 		
 		while(0 <= nums1Index || 0 <= nums2Index || 0 < resultIndex) {
@@ -37,7 +37,7 @@ public class MergeSortedArray {
 				}
 			}
 			
-			nums1[--resultIndex] = tempNum;
+			nums1[resultIndex--] = tempNum;
 		}
     }
 	
