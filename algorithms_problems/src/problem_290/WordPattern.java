@@ -21,39 +21,62 @@ package problem_290;
  * 	out: false
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 1 ms, faster than 83.28%
+ *  Memory Usage: 37.3 MB, less than 22.77%
  *  
  */
 
 public class WordPattern {
 	public static boolean wordPattern(String pattern, String s) {
-		// TODO Error Wrong Answer test_case pattern2
 		
-		String [] splitedStr = s.split(" ");
 		char [] splitedPattern = pattern.toCharArray();
+		String [] splitedStr = s.split(" ");
+		int patternSize = splitedPattern.length;
+		int strSize = splitedStr.length;
+		int i = 0;
 		
-		if(splitedStr.length != splitedPattern.length) return false;
+		if(patternSize != strSize) return false;
 		
-		for(int i=0; i<splitedPattern.length; i++) {
-			int left = i+1, right = splitedPattern.length-1;
+		while(0 < patternSize && i < patternSize) {
+			
+			char patternWord = splitedPattern[i];
+			String strWord = splitedStr[i];
+			
+			int left = i;
+			int right = patternSize-1;
 			
 			while(left < right) {
-				if(splitedPattern[i] == splitedPattern[left]) {
-					if(!splitedStr[i].equals(splitedStr[left])) return false;
-				} else if(splitedPattern[i] != splitedPattern[left]) {
-					if(splitedStr[i].equals(splitedStr[left])) return false;
+				
+				char patternLeft = splitedPattern[left];
+				char patternRight = splitedPattern[right];
+				
+				String strLeft = splitedStr[left];
+				String strRight = splitedStr[right];
+				
+				if(patternWord == patternLeft) {
+					if(strWord.equals(strLeft)) {
+						splitedPattern[left] = splitedPattern[left+1];
+						splitedStr[left] = splitedStr[left+1];
+					} else return false;
 				}
 				
-				if(splitedPattern[i] == splitedPattern[right]) {
-					if(!splitedStr[i].equals(splitedStr[right])) return false;
-				} else if(splitedPattern[i] != splitedPattern[right]) {
-					if(splitedStr[i].equals(splitedStr[right])) return false;
+				if(patternWord == patternRight) {
+					if(strWord.equals(strRight)) {
+						splitedPattern[right] = splitedPattern[right-1];
+						splitedStr[right] = splitedStr[right-1];
+					} else return false;
+				}
+				
+				if(patternWord != patternLeft) {
+					if(strWord.equals(strLeft)) return false;
+				} else if(patternWord != patternRight) { 
+					if(strWord.equals(strRight)) return false;
 				}
 				
 				left++;
 				right--;
 			}
+			i++;
 		}
 		
 		return true;
@@ -62,8 +85,11 @@ public class WordPattern {
 	public static void main(String[] args) {
 		String pattern1 = "abba", s1 = "dog cat cat dog";
 		String pattern2 = "ab", s2 = "dog dog";
+		String pattern3 = "apstndp", s3 = "all people seem to need data processing";	// false
 		
 		System.out.println(wordPattern(pattern1, s1));
 		System.out.println(wordPattern(pattern2, s2));
+		System.out.println(wordPattern(pattern3, s3));
+		
 	}
 }
