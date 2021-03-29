@@ -1,5 +1,19 @@
 package problem_104;
 
+/*	
+ * 	Name: Kim Geuntae
+ * 	Github: https://github.com/kimgeuntae/leetCode_Algorithms
+ * 	FileName : MaximumDepthofBinaryTree.java
+ *
+ * 	in:	root = [3,9,20,null,null,15,7]
+ * 	out: 3
+ *  
+ *  [solved]
+ *  Runtime: 0 ms, faster than 100.00%
+ *  Memory Usage: 39.4 MB, less than 17.31%
+ *  
+ */
+
 public class MaximumDepthofBinaryTree {
 	public static int maxDepth(TreeNode root) {
         int dep, depL, depR;
@@ -15,6 +29,18 @@ public class MaximumDepthofBinaryTree {
         
         return dep;
     }
+	
+	public static int depthNum(TreeNode root) {
+		int num;
+		
+		if(root == null) {
+			return 0;
+		} else {
+			num = depthNum(root.left) + depthNum(root.right);
+		}
+		
+		return num+1;
+	}
 	
 	public static void main(String[] args) {
 		
