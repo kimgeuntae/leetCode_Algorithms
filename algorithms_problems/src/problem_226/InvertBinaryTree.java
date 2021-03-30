@@ -19,6 +19,15 @@ public class InvertBinaryTree {
 	public static TreeNode invertTree(TreeNode root) {
 		
 		if(root == null) return null;
+		
+//		TreeNode temp = new TreeNode();
+//		
+//		temp.val = root.val;
+//		temp.right = invertTree(root.left);
+//		temp.left = invertTree(root.right);
+//		
+//		return temp;
+		
 		return new TreeNode(root.val, invertTree(root.right), invertTree(root.left));
 		
 	}
