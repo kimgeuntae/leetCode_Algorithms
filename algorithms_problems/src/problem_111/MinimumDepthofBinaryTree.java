@@ -12,31 +12,27 @@ package problem_111;
  * 	out: 5
  *  
  *  [solved]
- *  Runtime:
- *  Memory Usage:
+ *  Runtime: 5 ms, faster than 59.91%
+ *  Memory Usage: 59.9 MB, less than 59.46%
  *  
  */
 
 public class MinimumDepthofBinaryTree {
+	
 	public static int minDepth(TreeNode root) {
-		//TODO Change Algorithm
 		
         int dep, depL, depR;
         
         if(root == null) {
         	return 0;
         } else {
-		    if(root.left == null && root.right == null) {
-		    	dep = 1;
-		    } else {
-		    	depL = minDepth(root.left);
-		    	depR = minDepth(root.right);
-		    	if(depL >= depR) dep = depR+1;
-		    	else dep = depL+1;
-		    }
-        
-        	return dep;
+	    	depL = minDepth(root.left);
+	    	depR = minDepth(root.right);
+	    	if(depL == 0 || depR == 0) dep = depL + depR + 1;
+	    	else dep = Math.min(depL, depR) + 1;
         }
+        
+        return dep;
     }
 	
 	public static void main(String[] args) {
