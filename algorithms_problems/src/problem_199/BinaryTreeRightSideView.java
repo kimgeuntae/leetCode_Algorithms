@@ -23,7 +23,12 @@ public class BinaryTreeRightSideView {
 		
 		if(root != null) {
 			temp.add(root.val);
-			temp.addAll(rightSideView(root.right));
+			if(root.right != null) {
+				temp.addAll(rightSideView(root.right));
+			} else if(root.left != null) {
+				temp.addAll(rightSideView(root.left));
+			}
+			
 		}
 		
 		return temp;
@@ -42,6 +47,11 @@ public class BinaryTreeRightSideView {
 		TreeNode n1 = new TreeNode(1, n2, n3);
 		
 		System.out.println(rightSideView(n1));
+		
+		TreeNode r2 = new TreeNode(2, null, null);
+		TreeNode r1 = new TreeNode(1, r2, null);
+		
+		System.out.println(rightSideView(r1));
 		
 	}
 }
