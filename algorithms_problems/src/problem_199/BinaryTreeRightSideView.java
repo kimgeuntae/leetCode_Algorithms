@@ -45,13 +45,21 @@ public class BinaryTreeRightSideView {
 		TreeNode n3 = new TreeNode(3, null, n4);
 		TreeNode n2 = new TreeNode(2, null, n5);
 		TreeNode n1 = new TreeNode(1, n2, n3);
-		
 		System.out.println(rightSideView(n1));
 		
 		TreeNode r2 = new TreeNode(2, null, null);
 		TreeNode r1 = new TreeNode(1, r2, null);
-		
 		System.out.println(rightSideView(r1));
+		
+//			1
+//		  2	  3
+//	  	4	
+		// TODO error_case answer 1,3,4
+		TreeNode t4 = new TreeNode(4, null, null);
+		TreeNode t3 = new TreeNode(3, null, null);
+		TreeNode t2 = new TreeNode(2, null, t4);
+		TreeNode t1 = new TreeNode(1, t2, t3);
+		System.out.println(rightSideView(t1));
 		
 	}
 }
